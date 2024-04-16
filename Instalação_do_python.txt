@@ -1,0 +1,61 @@
+ Instalar o python diretamente do site python.org
+
+1. Verificar a Instalação do Python
+Primeiro, verificamos se o Python estava instalado no sistema. Para fazer isso, abrimos o terminal e executamos:
+
+python --version
+ou
+python3 --version
+
+2. Verificar o Caminho do Python
+Verificamos o caminho do Python usando o seguinte comando:
+
+where python
+
+3. Identificar o Problema
+O caminho do Python apontava para a instalação da Microsoft Store, que não inclui o pip ou outros executáveis padrão, causando o erro "Python não encontrado".
+
+4. Adicionar o Caminho Correto ao PATH
+Para corrigir isso, adicionamos o caminho correto do Python às variáveis de ambiente do sistema:
+
+Abra o Painel de Controle.
+Clique em "Sistema e Segurança" > "Sistema" > "Configurações avançadas do sistema".
+Na aba "Avançado", clique em "Variáveis de Ambiente".
+Na seção "Variáveis do Sistema", localize a variável "Path" e clique em "Editar".
+Adicione o caminho C:\Users\Thiago\AppData\Local\Microsoft\WindowsApps\ no campo "Valor da variável".
+
+5. Reiniciar o Terminal do VS Code
+Depois de adicionar o caminho ao PATH, reiniciamos o terminal do VS Code para aplicar as alterações.
+
+6. Criar um Ambiente Virtual
+Para criar um ambiente virtual, usamos o seguinte comando no terminal do VS Code:
+
+python -m venv venv
+
+7. Ativar o Ambiente Virtual
+Para ativar o ambiente virtual, tentamos usar o seguinte comando no terminal do VS Code:
+
+.\venv\Scripts\activate
+
+8. Resolver o Erro de Política de Execução do PowerShell
+Como enfrentamos um erro de política de execução do PowerShell ao tentar ativar o ambiente virtual, alteramos temporariamente a política de execução do PowerShell para permitir a execução de scripts:
+
+Abra o PowerShell como Administrador.
+
+Execute o seguinte comando para permitir a execução de scripts:
+
+
+Set-ExecutionPolicy Unrestricted -Scope CurrentUser
+
+Ative o ambiente virtual no VS Code novamente:
+
+.\venv\Scripts\activate
+
+
+(Opcional) Restaure a política de execução original para manter a segurança do sistema:
+
+
+Set-ExecutionPolicy Restricted -Scope CurrentUser
+
+Após seguir esses passos, o Python deve funcionar corretamente no VS Code, e você deve ser capaz de criar e ativar ambientes virtuais, bem como instalar pacotes usando pip.
+
